@@ -44,7 +44,6 @@ import com.google.android.exoplayer.metadata.MetadataTrackRenderer.MetadataRende
 import com.google.android.exoplayer.upstream.BandwidthMeter;
 import com.google.android.exoplayer.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer.util.DebugTextViewHelper;
-import com.google.android.exoplayer.util.PlayerControl;
 
 import java.io.IOException;
 import java.util.Map;
@@ -66,7 +65,7 @@ public class DemoPlayer implements ExoPlayer.Listener, ChunkSampleSource.EventLi
         this.rendererBuilder = rendererBuilder;
         player = ExoPlayer.Factory.newInstance(RENDERER_COUNT, 1000, 5000);
         player.addListener(this);
-        playerControl = new QMediaPlayerControl(root, windowManager, player);
+        playerControl = new QMediaPlayerControl(root, player);
         mainHandler = new Handler();
         listeners = new CopyOnWriteArrayList<>();
         lastReportedPlaybackState = STATE_IDLE;

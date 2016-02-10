@@ -1,6 +1,5 @@
 package com.bskyb.qplayer;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -193,7 +192,9 @@ public class PlayerActivity extends AppCompatActivity implements SurfaceHolder.C
     @Override
     public void onStateChanged(boolean playWhenReady, int playbackState) {
         if (playbackState == ExoPlayer.STATE_ENDED) {
-            showControls();
+            mediaController.setStateEnd();
+            playerPosition = 0;
+            player.seekTo(playerPosition);
         }
     }
 

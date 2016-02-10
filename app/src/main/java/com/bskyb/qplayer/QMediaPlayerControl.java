@@ -1,9 +1,6 @@
 package com.bskyb.qplayer;
 
-import android.content.Context;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.WindowManager;
 
 import com.google.android.exoplayer.ExoPlayer;
 
@@ -14,13 +11,11 @@ public class QMediaPlayerControl implements MediaPlayerControl {
 
 
     private final View videoSurfaceContainer;
-    private final WindowManager windowManager;
     private ExoPlayer player;
     private boolean isFullScreen;
 
-    public QMediaPlayerControl(View videoSurfaceContainer, WindowManager windowManager, ExoPlayer player) {
+    public QMediaPlayerControl(View videoSurfaceContainer, ExoPlayer player) {
         this.videoSurfaceContainer = videoSurfaceContainer;
-        this.windowManager = windowManager;
         this.player = player;
     }
 
@@ -57,15 +52,6 @@ public class QMediaPlayerControl implements MediaPlayerControl {
                     View.SYSTEM_UI_FLAG_VISIBLE
             );
         }
-/*
-        DisplayMetrics metrics = new DisplayMetrics();
-        windowManager.getDefaultDisplay().getMetrics(metrics);
-        android.widget.FrameLayout.LayoutParams params = (android.widget.FrameLayout.LayoutParams) videoSurfaceContainer.getLayoutParams();
-        params.width = metrics.widthPixels;
-        params.height = metrics.heightPixels;
-        params.leftMargin = 0;
-        videoSurfaceContainer.setLayoutParams(params);
-*/
     }
 
 

@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -21,7 +20,6 @@ import android.widget.TextView;
 
 import com.bskyb.qplayer.MediaPlayerControl;
 import com.bskyb.qplayer.R;
-import com.google.android.exoplayer.util.PlayerControl;
 
 import java.lang.ref.WeakReference;
 import java.util.Formatter;
@@ -415,6 +413,14 @@ public class QPlayerControllerView extends FrameLayout {
         }
         disableUnsupportedButtons();
         super.setEnabled(enabled);
+    }
+
+    public void setStateEnd() {
+        if (mPlayer.isPlaying()) {
+            mPlayer.pause();
+        }
+        mPlayPauseButton.setImageResource(R.mipmap.play);
+        show(0);
     }
 
 
