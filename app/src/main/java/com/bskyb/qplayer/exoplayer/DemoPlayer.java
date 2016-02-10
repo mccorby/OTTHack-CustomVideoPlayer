@@ -20,7 +20,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.Surface;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 
 import com.bskyb.qplayer.MediaPlayerControl;
 import com.bskyb.qplayer.QMediaPlayerControl;
@@ -60,7 +59,7 @@ public class DemoPlayer implements ExoPlayer.Listener, ChunkSampleSource.EventLi
         StreamingDrmSessionManager.EventListener, DashChunkSource.EventListener,
         MetadataRenderer<Map<String, Object>>, DebugTextViewHelper.Provider {
 
-    public DemoPlayer(ViewGroup root, WindowManager windowManager, RendererBuilder rendererBuilder) {
+    public DemoPlayer(ViewGroup root, RendererBuilder rendererBuilder) {
 
         this.rendererBuilder = rendererBuilder;
         player = ExoPlayer.Factory.newInstance(RENDERER_COUNT, 1000, 5000);

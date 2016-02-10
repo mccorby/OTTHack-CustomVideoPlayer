@@ -10,7 +10,6 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.bskyb.qplayer.exoplayer.DashRendererBuilder;
 import com.bskyb.qplayer.exoplayer.DemoPlayer;
@@ -34,7 +33,6 @@ public class PlayerActivity extends AppCompatActivity implements SurfaceHolder.C
     private AspectRatioFrameLayout videoFrame;
     private SurfaceView surfaceView;
 
-    private Button retryButton;
     private DemoPlayer player;
 
     private boolean playerNeedsPrepare;
@@ -99,8 +97,8 @@ public class PlayerActivity extends AppCompatActivity implements SurfaceHolder.C
     @Override
     public void onResume() {
         super.onResume();
-        contentUri = Uri.parse("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4");
-        contentType = Video.TYPE_OTHER;
+        contentUri = Uri.parse("http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8");
+        contentType = Video.TYPE_HLS;
         if (player == null) {
             preparePlayer(true);
         } else {
@@ -147,7 +145,7 @@ public class PlayerActivity extends AppCompatActivity implements SurfaceHolder.C
     }
 
     // Internal methods
-
+    // TODO Move this to a Factory
     private DemoPlayer.RendererBuilder getRendererBuilder() {
         String userAgent = Util.getUserAgent(this, "ExoPlayerDemo");
         switch (contentType) {
@@ -164,7 +162,7 @@ public class PlayerActivity extends AppCompatActivity implements SurfaceHolder.C
 
     private void preparePlayer(boolean playWhenReady) {
         if (player == null) {
-            player = new DemoPlayer(root, getWindowManager(), getRendererBuilder());
+            player = new DemoPlayer(root, getRendererBuilder());
             player.addListener(this);
             player.seekTo(playerPosition);
             playerNeedsPrepare = true;
