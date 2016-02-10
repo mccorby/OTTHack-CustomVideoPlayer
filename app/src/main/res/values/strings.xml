@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">QPlayer</string>
+    <string name="title_activity_player">PlayerActivity</string>
+    <string name="description">Desc</string>
+</resources>
